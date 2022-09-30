@@ -1,0 +1,26 @@
+version: "1"
+rules: # Array of rules
+  - base: "main"
+    upstream: "V2.0-beta"
+    mergeMethod: rebase
+    conflictReviewers:
+      - ankushg
+
+  # Upstream Sources
+  - base: "V2.0-beta" # Required. Target branch
+    upstream: "KinesisCorporation:V2.0-beta" # Required. Must be in the same fork network (owner:branch). Can be a branch in the same forked repo.
+    mergeMethod: none # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
+    mergeUnstable: false # Optional, merge pull request even when the mergeable_state is not clean. Default: false
+    # V1.0
+  - base: "V1.0"
+    upstream: "KinesisCorporation:V1.0"
+    mergeMethod: none
+    mergeUnstable: false
+    # V1.0
+  - base: "KinesisCorporation-Production_File"
+    upstream: "KinesisCorporation:KinesisCorporation-Production_File"
+    mergeMethod: none
+    mergeUnstable: false
+
+label: "chore/pull" # Optional
+conflictLabel: "chore/merge-conflict" # Optional, on merge conflict assign a custom label, Default: merge-conflict
